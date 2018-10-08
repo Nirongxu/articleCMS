@@ -1,0 +1,79 @@
+.content-wrap .main-content .articleCon{
+    background: rgba(255, 255, 255, 0.9);
+    height: auto;
+}
+.content-wrap .articleList .authSpan{
+    position: absolute;
+    right: 0px;
+    top: 60px;
+}
+.dianzan span{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    color: #ffffff;
+    background-color: #ff5e52;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.dianzan span i{
+    margin-top: 7px;
+}
+.commentList,.publish{
+    padding: 25px 20px 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+.commentParent{
+    padding-top: 20px;
+    border-top: 1px solid #999;
+    margin-top: 20px;
+}
+.userIco{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.username{
+    color: #666;
+    font-size: 12px;
+}
+.commentText{
+    padding: 15px;
+    font-size: 14px;
+    color: #666;
+}
+.info-footer{
+    margin-bottom: 0px;
+}
+.info-footer .time{
+    margin-right: 10px;
+    color: #666;
+}
+.info-footer .btn-reply,.hf{
+    color: #79a5e5 !important;
+    margin-right: 20px;
+}
+.commentChild{
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.5) !important;
+    padding-top: 10px;
+}
+.w-e-text-container{
+    height: 150px !important;
+    border: none !important;
+}
+.w-e-text {
+    overflow-y: auto !important;
+}
+.w-e-toolbar{
+    background-color: rgba(255, 255, 255, 0.5) !important;
+     border: none !important;
+}
+.submit{
+    width: 80px;
+}
