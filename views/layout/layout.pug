@@ -19,7 +19,13 @@ html(lang="zh-Hans")
         include ./header
 
         //- content
-        block contents
+        section.content-wrap.mb50
+            .container
+                .row
+                    //- main
+                    block main
+                    //- aside
+                    include ./aside
 
         //- footer
         include ./footer

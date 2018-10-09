@@ -1,0 +1,53 @@
+doctype html
+html(lang='zh-Hans')
+    head
+        meta(charset='UTF-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+        link(rel='stylesheet', href='bootstarp/css/bootstrap.min.css')
+        link(rel='stylesheet', href='fontawesome/css/font-awesome.min.css')
+        link(rel='stylesheet', href='css/common.css')
+        link(rel='stylesheet', href='css/login.css')
+        //if lt IE 9
+          script(src='https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js')
+          script(src='https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js')
+        title Title
+    body
+        .cotn_principal
+            .cont_centrar
+                .cont_login
+                    .cont_info_log_sign_up
+                        .col_md_login
+                            .cont_ba_opcitiy
+                                h2 登录
+                                p 已有账号,点此登录
+                                button.btn_login(onclick='cambiar_login()') 登录
+                        .col_md_sign_up
+                            .cont_ba_opcitiy
+                                h2 注册
+                                p 还没账号,点此注册
+                                button.btn_sign_up(onclick='cambiar_sign_up()') 注册
+                    .cont_back_info
+                        .cont_img_back_grey
+                            img(src='images/bg26.jpg', alt='')
+                    .cont_forms
+                        .cont_img_back_
+                            img(src='images/bg26.jpg', alt='')
+                        .cont_form_login
+                            a(href='#', onclick='ocultar_login_sign_up()')
+                                i.glyphicon.glyphicon-remove
+                            h3 登录
+                            input(type='text', placeholder='User/Email')
+                            input(type='password', placeholder='Password')
+                            button.btn_login.subBtn(onclick='cambiar_login()') 登录
+                        .cont_form_sign_up
+                            a(href='#', onclick='ocultar_login_sign_up()')
+                                i.glyphicon.glyphicon-remove
+                            h3 注册
+                            input(type='text', placeholder='User/Email')
+                            input(type='password', placeholder='Password')
+                            input(type='password', placeholder='Confirm Password')
+                            button.btn_sign_up.regBtn(onclick='cambiar_sign_up()') 注册
+        script(src='js/jquery-2.2.0.min.js')
+        script(src='js/common.js')
+        script(src='js/login.js')

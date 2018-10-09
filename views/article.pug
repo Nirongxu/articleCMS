@@ -1,0 +1,149 @@
+extends ./layout/layout
+
+block css
+    link(rel="stylesheet", href="css/article.css")
+
+block main
+    main.col-lg-9.main-content
+        article.articleList.articleCon
+            .articleTitle.mb10
+                p
+                    a.classify(href='#') javascript
+                    a.title(href='#') 标题标题标题标题标题标题标题标题标题标题
+            p.authSpan
+                span.muted
+                    i.fa.fa-user
+                    |  夏洛克丶旭
+                span.muted
+                    i.fa.fa-clock-o
+                    |  2018-01-01
+                span.muted
+                    i.fa.fa-eye
+                    |  阅读(500)
+                span.muted.articlepl
+                    i.fa.fa-commenting
+                    a(href='#') 评论(30)
+                span.muted.dz
+                    i.fa.fa-thumbs-up
+                    | 点赞(500)
+            .articleAbstract.mt40.mb40
+                | 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                | 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                | 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                | 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                | 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                | 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                | 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                | 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                | 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                | 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                | 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                | 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                | 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                | 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                | 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                | 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                | 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+                p.text-center.dianzan.mt50
+                    span
+                        i.fa.fa-thumbs-up.fa-2x
+                        |   赞
+        .publish
+            h4.feedbackTitle.mb20 发表评论
+            #Editor
+                p 简单点,评论的方式简单点...
+            p.text-right.mt10
+                button.btn.btn-info.submit(type='button') 发  送
+        .commentList.mt20.pt20
+            h4.feedbackTitle.mb20 评论列表
+            .commentCon(style='text-align:initial')
+                ul.blog-comment
+                    li
+                        .commentParent
+                            .info
+                                span.username
+                                    img.userIco(src='images/timthumb.jpg', align='center')
+                                    | 夏洛克·福尔摩斯
+                            .commentText
+                                | 整条街的智商都被你拉低了
+                            p.info.info-footer.text-right.mb5
+                                span.time 2017-04-18 18:09
+                                a.btn-reply(href='javascript:;') 回复
+                            .commentChild
+                                .info
+                                    span.username.pr10
+                                        img.userIco(src='images/timthumb.jpg')
+                                        | 艾琳·艾德勒
+                                    span.hf 回复:
+                                    span 我就知道你动心了
+                                p.info.info-footer.text-right
+                                    span.time 2017-04-18 18:26
+                            .commentChild
+                                .info
+                                    span.username.pr10
+                                        img.userIco(src='images/timthumb.jpg')
+                                        | 艾琳·艾德勒
+                                    span.hf 回复:
+                                    span 我就知道你动心了
+                                p.info.info-footer.text-right
+                                    span.time 2017-04-18 18:26
+                    li
+                        .commentParent
+                            .info
+                                span.username
+                                    img.userIco(src='images/timthumb.jpg', align='center')
+                                    | 夏洛克·福尔摩斯
+                            .commentText
+                                | 整条街的智商都被你拉低了
+                            p.info.info-footer.text-right.mb5
+                                span.time 2017-04-18 18:09
+                                a.btn-reply(href='javascript:;') 回复
+                            .commentChild.pb5
+                                .info
+                                    span.username.pr10
+                                        img.userIco(src='images/timthumb.jpg')
+                                        | 艾琳·艾德勒
+                                    span.hf 回复:
+                                    span 我就知道你动心了
+                                p.info.info-footer.text-right
+                                    span.time 2017-04-18 18:26
+                            .commentChild.pb5
+                                .info
+                                    span.username.pr10
+                                        img.userIco(src='images/timthumb.jpg')
+                                        | 艾琳·艾德勒
+                                    span.hf 回复:
+                                    span 我就知道你动心了
+                                p.info.info-footer.text-right
+                                    span.time 2017-04-18 18:26
+block script
+    script(type='text/javascript', src='wangEditor/release/wangEditor.min.js')
+        script(type='text/javascript').
+            var E = window.wangEditor
+            var editor = new E('#Editor')
+            // 自定义菜单配置
+            editor.customConfig.menus = [
+                'head',  // 标题
+                'bold',  // 粗体
+                'fontSize',  // 字号
+                'fontName',  // 字体
+                'italic',  // 斜体
+                'underline',  // 下划线
+                'strikeThrough',  // 删除线
+                'foreColor',  // 文字颜色
+                'backColor',  // 背景颜色
+                'link',  // 插入链接
+                'list',  // 列表
+                'justify',  // 对齐方式
+                'quote',  // 引用
+                'emoticon',  // 表情
+                'image',  // 插入图片
+                'table',  // 表格
+                'code',  // 插入代码
+                'undo',  // 撤销
+                'redo'  // 重复
+            ]
+            editor.customConfig.uploadImgShowBase64 = true
+            editor.create()
+
+

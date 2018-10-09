@@ -3,250 +3,44 @@ extends ./layout/layout
 block css
     link(rel="stylesheet", href="css/index.css")
 
-block contents
-
-    section.content-wrap.mb50
-        .container
+block main
+    main.col-lg-9.main-content
+        article.articleList
+            .articleTitle.mb10
+                p
+                    a.classify(href="#") javascript
+                    a.title(href="#") 标题标题标题标题标题标题标题标题标题标题
+            |
             .row
-                main.col-lg-9.main-content
-                    article.articleList
-                        .articleTitle.mb10
-                            p
-                                a.classify(href="#") javascript
-                                a.title(href="#") 标题标题标题标题标题标题标题标题标题标题
-                        |
-                        .row
-                            .col-lg-3.articleThumbnail
-                                a(href="#")
-                                    img(src="images/timthumb.jpg")
-                            |
-                            .col-lg-9.articleAbstract
-                                p
-                                    span.abstract 摘要:
-                                    | 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
-                                    |                                 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容...
-                                    |
-                                    a.ydqw.pl5(href="#") 阅读全文
-                            |
-                            p.authSpan
-                                span.muted
-                                    i.fa.fa-user
-                                    |  夏洛克丶旭
-                                |
-                                span.muted
-                                    i.fa.fa-clock-o
-                                    |  2018-01-01
-                                |
-                                span.muted
-                                    i.fa.fa-eye
-                                    |  阅读(500)
-                                |
-                                span.muted.articlepl
-                                    i.fa.fa-commenting
-                                    a(href="#") 评论(30)
-                                |
-                                span.muted.dz
-                                    i.fa.fa-thumbs-up
-                                    | 点赞(500)
-                    |
-                    article.articleList
-                        .articleTitle.mb10
-                            p
-                                a.classify(href="#") javascript
-                                a.title(href="#") 标题标题标题标题标题标题标题标题标题标题
-                        |
-                        .row
-                            .col-lg-3.articleThumbnail
-                                a(href="#")
-                                    img(src="images/timthumb.jpg")
-                            |
-                            .col-lg-9.articleAbstract
-                                p
-                                    span.abstract 摘要:
-                                    | 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
-                                    |                                 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容...
-                                    |
-                                    a.ydqw.pl5(href="#") 阅读全文
-                            |
-                            p.authSpan
-                                span.muted
-                                    i.fa.fa-user
-                                    |  夏洛克丶旭
-                                |
-                                span.muted
-                                    i.fa.fa-clock-o
-                                    |  2018-01-01
-                                |
-                                span.muted
-                                    i.fa.fa-eye
-                                    |  阅读(500)
-                                |
-                                span.muted.articlepl
-                                    i.fa.fa-commenting
-                                    a(href="#") 评论(30)
-                                |
-                                span.muted.dz
-                                    i.fa.fa-thumbs-up
-                                    | 点赞(500)
-                    |
-                    article.articleList
-                        .articleTitle.mb10
-                            p
-                                a.classify(href="#") javascript
-                                a.title(href="#") 标题标题标题标题标题标题标题标题标题标题
-                        |
-                        .row
-                            .col-lg-3.articleThumbnail
-                                a(href="#")
-                                    img(src="images/timthumb.jpg")
-                            |
-                            .col-lg-9.articleAbstract
-                                p
-                                    span.abstract 摘要:
-                                    | 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
-                                    |                                 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容...
-                                    |
-                                    a.ydqw.pl5(href="#") 阅读全文
-                            |
-                            p.authSpan
-                                span.muted
-                                    i.fa.fa-user
-                                    |  夏洛克丶旭
-                                |
-                                span.muted
-                                    i.fa.fa-clock-o
-                                    |  2018-01-01
-                                |
-                                span.muted
-                                    i.fa.fa-eye
-                                    |  阅读(500)
-                                |
-                                span.muted.articlepl
-                                    i.fa.fa-commenting
-                                    a(href="#") 评论(30)
-                                |
-                                span.muted.dz
-                                    i.fa.fa-thumbs-up
-                                    | 点赞(500)
-                    |
-                    article.articleList
-                        .articleTitle.mb10
-                            p
-                                a.classify(href="#") javascript
-                                a.title(href="#") 标题标题标题标题标题标题标题标题标题标题
-                        |
-                        .row
-                            .col-lg-3.articleThumbnail
-                                a(href="#")
-                                    img(src="images/timthumb.jpg")
-                            |
-                            .col-lg-9.articleAbstract
-                                p
-                                    span.abstract 摘要:
-                                    | 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
-                                    |                                 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容...
-                                    |
-                                    a.ydqw.pl5(href="#") 阅读全文
-                            |
-                            p.authSpan
-                                span.muted
-                                    i.fa.fa-user
-                                    |  夏洛克丶旭
-                                |
-                                span.muted
-                                    i.fa.fa-clock-o
-                                    |  2018-01-01
-                                |
-                                span.muted
-                                    i.fa.fa-eye
-                                    |  阅读(500)
-                                |
-                                span.muted.articlepl
-                                    i.fa.fa-commenting
-                                    a(href="#") 评论(30)
-                                |
-                                span.muted.dz
-                                    i.fa.fa-thumbs-up
-                                    | 点赞(500)
-                    |
-                    article.articleList
-                        .articleTitle.mb10
-                            p
-                                a.classify(href="#") javascript
-                                a.title(href="#") 标题标题标题标题标题标题标题标题标题标题
-                        |
-                        .row
-                            .col-lg-3.articleThumbnail
-                                a(href="#")
-                                    img(src="images/timthumb.jpg")
-                            |
-                            .col-lg-9.articleAbstract
-                                p
-                                    span.abstract 摘要:
-                                    | 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
-                                    |                                 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容...
-                                    |
-                                    a.ydqw.pl5(href="#") 阅读全文
-                            |
-                            p.authSpan
-                                span.muted
-                                    i.fa.fa-user
-                                    |  夏洛克丶旭
-                                |
-                                span.muted
-                                    i.fa.fa-clock-o
-                                    |  2018-01-01
-                                |
-                                span.muted
-                                    i.fa.fa-eye
-                                    |  阅读(500)
-                                |
-                                span.muted.articlepl
-                                    i.fa.fa-commenting
-                                    a(href="#") 评论(30)
-                                |
-                                span.muted.dz
-                                    i.fa.fa-thumbs-up
-                                    | 点赞(500)
+                .col-lg-3.articleThumbnail
+                    a(href="#")
+                        img(src="images/timthumb.jpg")
                 |
-                aside.col-lg-3.sidebar
-                    .widget.mb20
-                        h4.title 阅读排行榜
+                .col-lg-9.articleAbstract
+                    p
+                        span.abstract 摘要:
+                        | 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
+                        |                                 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容...
                         |
-                        .content
-                            ul
-                                li
-                                    a(href="#") 标题标题标题标题标题标题标题标题标题标题
-                                |
-                                li
-                                    a(href="#") 标题标题标题标题标题标题标题标题标题标题
-                                |
-                                li
-                                    a(href="#") 标题标题标题标题标题标题标题标题标题标题
-                                |
-                                li
-                                    a(href="#") 标题标题标题标题标题标题标题标题标题标题
-                                |
-                                li
-                                    a(href="#") 标题标题标题标题标题标题标题标题标题标题
-                        |
-                        p.upDown.text-center
-                            i.fa.fa-angle-double-down.fa-4x
+                        a.ydqw.pl5(href="#") 阅读全文
+                |
+                p.authSpan
+                    span.muted
+                        i.fa.fa-user
+                        |  夏洛克丶旭
                     |
-                    .widget.mb20
-                        h4.title 分类
-                        |
-                        .content
-                            ul
-                                li
-                                    a(href="#") Vue
-                                |
-                                li
-                                    a(href="#") Node.js
-                                |
-                                li
-                                    a(href="#") javascript
-                        |
-                        p.upDown.text-center
-                            i.fa.fa-angle-double-down.fa-4x
-
+                    span.muted
+                        i.fa.fa-clock-o
+                        |  2018-01-01
+                    |
+                    span.muted
+                        i.fa.fa-eye
+                        |  阅读(500)
+                    |
+                    span.muted.articlepl
+                        i.fa.fa-commenting
+                        a(href="#") 评论(30)
+                    |
+                    span.muted.dz
+                        i.fa.fa-thumbs-up
+                        | 点赞(500)
