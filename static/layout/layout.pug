@@ -5,9 +5,9 @@ html(lang="zh-Hans")
         meta(name="author", content="NiRongxu")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
-        link(rel="stylesheet", href="../bootstarp/css/bootstrap.min.css")
-        link(rel="stylesheet", href="../fontawesome/css/font-awesome.min.css")
-        link(rel="stylesheet", href="../css/common.css")
+        link(rel="stylesheet", href="/bootstarp/css/bootstrap.min.css")
+        link(rel="stylesheet", href="/fontawesome/css/font-awesome.min.css")
+        link(rel="stylesheet", href="/css/common.css")
         block css
 
         //if lt IE 9
@@ -16,7 +16,7 @@ html(lang="zh-Hans")
         title = title
     body
         //- nav
-        include ./header
+        include header
 
         //- content
         section.content-wrap.mb50
@@ -25,13 +25,13 @@ html(lang="zh-Hans")
                     //- main
                     block main
                     //- aside
-                    include ./aside
+                    include aside
 
         //- footer
-        include ./footer
+        include footer
 
         //- script
-        script(src="../js/jquery-2.2.0.min.js")
-        script(src="../bootstarp/js/bootstrap.min.js")
-        script(src="../js/common.js")
+        script(src="/js/jquery-2.2.0.min.js")
+        script(src="/bootstarp/js/bootstrap.min.js")
+        script(src="/js/common.js")
         block script

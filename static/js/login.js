@@ -25,8 +25,6 @@ function cambiar_sign_up(at) {
 
 }
 
-
-
 function ocultar_login_sign_up() {
 
     document.querySelector('.cont_forms').className = "cont_forms";
@@ -39,3 +37,26 @@ function ocultar_login_sign_up() {
     },500);
 
 }
+
+$(".regBtn").click(() => {
+  let $user = $(".regUser").val()
+  let $regPswd = $(".regPswd").val()
+  let $regConfirmPswd = $(".regConfirmPswd").val()
+
+  $.ajax({
+    url: "/user/reg",
+    type: "POST",
+    data: {
+      "user": $user,
+      "regPswd": $regPswd,
+      "regConfirmPswd": $regConfirmPswd
+    },
+    dataType: "json",
+    success: function(data){
+      console.log(data);
+    },
+    error: function(msg){
+      console.log(msg);
+    },
+  })
+})

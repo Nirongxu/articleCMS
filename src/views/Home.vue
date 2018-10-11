@@ -53,7 +53,7 @@
                   </el-dropdown-menu>
                 </el-dropdown>
             </li>
-            <li class="icon"><img src="/static/images/icon.jpg" /> </li>
+            <li class="icon"><img src="/static/images/admin/icon.jpg" /> </li>
           </ul>
         </el-header>
         <div class="tabnavBox" ref="tabnavbox">

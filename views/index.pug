@@ -1,7 +1,7 @@
-extends ./layout/layout
+extends ../static/layout/layout
 
 block css
-    link(rel="stylesheet", href="css/index.css")
+    link(rel="stylesheet", href="/css/index.css")
 
 block main
     main.col-lg-9.main-content
@@ -14,7 +14,7 @@ block main
             .row
                 .col-lg-3.articleThumbnail
                     a(href="#")
-                        img(src="images/timthumb.jpg")
+                        img(src="/images/timthumb.jpg")
                 |
                 .col-lg-9.articleAbstract
                     p

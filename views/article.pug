@@ -1,7 +1,7 @@
-extends ./layout/layout
+extends ../static/layout/layout
 
 block css
-    link(rel="stylesheet", href="css/article.css")
+    link(rel="stylesheet", href="/css/article.css")
 
 block main
     main.col-lg-9.main-content
@@ -62,7 +62,7 @@ block main
                         .commentParent
                             .info
                                 span.username
-                                    img.userIco(src='images/timthumb.jpg', align='center')
+                                    img.userIco(src='/images/timthumb.jpg', align='center')
                                     | 夏洛克·福尔摩斯
                             .commentText
                                 | 整条街的智商都被你拉低了
@@ -72,7 +72,7 @@ block main
                             .commentChild
                                 .info
                                     span.username.pr10
-                                        img.userIco(src='images/timthumb.jpg')
+                                        img.userIco(src='/images/timthumb.jpg')
                                         | 艾琳·艾德勒
                                     span.hf 回复:
                                     span 我就知道你动心了
@@ -81,7 +81,7 @@ block main
                             .commentChild
                                 .info
                                     span.username.pr10
-                                        img.userIco(src='images/timthumb.jpg')
+                                        img.userIco(src='/images/timthumb.jpg')
                                         | 艾琳·艾德勒
                                     span.hf 回复:
                                     span 我就知道你动心了
@@ -91,7 +91,7 @@ block main
                         .commentParent
                             .info
                                 span.username
-                                    img.userIco(src='images/timthumb.jpg', align='center')
+                                    img.userIco(src='/images/timthumb.jpg', align='center')
                                     | 夏洛克·福尔摩斯
                             .commentText
                                 | 整条街的智商都被你拉低了
@@ -101,7 +101,7 @@ block main
                             .commentChild.pb5
                                 .info
                                     span.username.pr10
-                                        img.userIco(src='images/timthumb.jpg')
+                                        img.userIco(src='/images/timthumb.jpg')
                                         | 艾琳·艾德勒
                                     span.hf 回复:
                                     span 我就知道你动心了
@@ -110,14 +110,14 @@ block main
                             .commentChild.pb5
                                 .info
                                     span.username.pr10
-                                        img.userIco(src='images/timthumb.jpg')
+                                        img.userIco(src='/images/timthumb.jpg')
                                         | 艾琳·艾德勒
                                     span.hf 回复:
                                     span 我就知道你动心了
                                 p.info.info-footer.text-right
                                     span.time 2017-04-18 18:26
 block script
-    script(type='text/javascript', src='wangEditor/release/wangEditor.min.js')
+    script(type='text/javascript', src='/wangEditor/release/wangEditor.min.js')
         script(type='text/javascript').
             var E = window.wangEditor
             var editor = new E('#Editor')

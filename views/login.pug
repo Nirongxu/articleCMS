@@ -4,10 +4,10 @@ html(lang='zh-Hans')
         meta(charset='UTF-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
-        link(rel='stylesheet', href='bootstarp/css/bootstrap.min.css')
-        link(rel='stylesheet', href='fontawesome/css/font-awesome.min.css')
-        link(rel='stylesheet', href='css/common.css')
-        link(rel='stylesheet', href='css/login.css')
+        link(rel='stylesheet', href='/bootstarp/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/fontawesome/css/font-awesome.min.css')
+        link(rel='stylesheet', href='/css/common.css')
+        link(rel='stylesheet', href='/css/login.css')
         //if lt IE 9
           script(src='https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js')
           script(src='https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js')
@@ -29,10 +29,10 @@ html(lang='zh-Hans')
                                 button.btn_sign_up(onclick='cambiar_sign_up()') 注册
                     .cont_back_info
                         .cont_img_back_grey
-                            img(src='images/bg26.jpg', alt='')
+                            img(src='/images/background/bg26.jpg', alt='')
                     .cont_forms
                         .cont_img_back_
-                            img(src='images/bg26.jpg', alt='')
+                            img(src='/images/background/bg26.jpg', alt='')
                         .cont_form_login
                             a(href='#', onclick='ocultar_login_sign_up()')
                                 i.glyphicon.glyphicon-remove
@@ -44,10 +44,10 @@ html(lang='zh-Hans')
                             a(href='#', onclick='ocultar_login_sign_up()')
                                 i.glyphicon.glyphicon-remove
                             h3 注册
-                            input(type='text', placeholder='User/Email')
-                            input(type='password', placeholder='Password')
-                            input(type='password', placeholder='Confirm Password')
-                            button.btn_sign_up.regBtn(onclick='cambiar_sign_up()') 注册
-        script(src='js/jquery-2.2.0.min.js')
-        script(src='js/common.js')
-        script(src='js/login.js')
+                            input.regUser(type='text', placeholder='User/Email')
+                            input.regPswd(type='password', placeholder='Password')
+                            input.regConfirmPswd(type='password', placeholder='Confirm Password')
+                            button.btn_sign_up.regBtn 注册
+        script(src='/js/jquery-2.2.0.min.js')
+        script(src='/js/common.js')
+        script(src='/js/login.js')
