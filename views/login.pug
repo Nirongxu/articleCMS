@@ -11,7 +11,7 @@ html(lang='zh-Hans')
         //if lt IE 9
           script(src='https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js')
           script(src='https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js')
-        title Title
+        title = title
     body
         .cotn_principal
             .cont_centrar
@@ -37,9 +37,9 @@ html(lang='zh-Hans')
                             a(href='#', onclick='ocultar_login_sign_up()')
                                 i.glyphicon.glyphicon-remove
                             h3 登录
-                            input(type='text', placeholder='User/Email')
-                            input(type='password', placeholder='Password')
-                            button.btn_login.subBtn(onclick='cambiar_login()') 登录
+                            input.logUser(type='text', placeholder='User/Email')
+                            input.logPswd(type='password', placeholder='Password')
+                            button.btn_login.subBtn 登录
                         .cont_form_sign_up
                             a(href='#', onclick='ocultar_login_sign_up()')
                                 i.glyphicon.glyphicon-remove

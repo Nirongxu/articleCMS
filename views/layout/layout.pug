@@ -11,9 +11,12 @@ html(lang="zh-Hans")
         block css
 
         //if lt IE 9
-          script(src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js")
-          script(src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js")
-        title = title
+            script(src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js")
+            script(src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js")
+        if fileTitle
+            title = fileTitle
+        else
+            title fileTitle
     body
         //- nav
         include header

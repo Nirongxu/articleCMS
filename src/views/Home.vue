@@ -336,7 +336,6 @@ export default {
     }
   }
   #asideNav{
-    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     border-right: solid 1px #e6e6e6;

@@ -7,7 +7,7 @@ header.main-header.pt40
 nav.main-navigation
     .container
         .row
-            .col-lg-12
+            .col-lg-10
                 ul
                     li
                         a(href="#") 导航
@@ -15,3 +15,10 @@ nav.main-navigation
                         a(href="#") 导航
                     li
                         a(href="#") 导航
+            .col-lg-2
+                p.login
+                    if user
+                        a(href="/login") 注册
+                        a(href="/login") 登录
+                    else
+                      span.name(href="javascript:void(0)") 倪荣旭
