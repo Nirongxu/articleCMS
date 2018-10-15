@@ -58,6 +58,7 @@ exports.login = async (ctx, next) => {
       if (err)return reject(err)
       if(data.length === 0) return reslove("用户名不存在")
       if(data[0].password === encrypt(password)) {
+        debugger
         // 在浏览器 cookie 里设置 账号密码
         ctx.cookies.set("username", username, {
           domain: "localhost",
@@ -100,4 +101,35 @@ exports.login = async (ctx, next) => {
   })
 }
 
-//
+// 保持用户的状态
+exports.keepLog = async (ctx, next) => {
+  console.log("keepLog"+ctx.session.isNew);
+  if (ctx.session.isNew){
+    if (ctx.cookies.get("username")){
+      ctx.session = {
+        username: ctx.cookies.get("username"),
+        uid: ctx.cookies.get("uid")
+      }
+    }
+  }
+  await next()
+}
+
+// 退出登录
+exports.logout = async (ctx, next) => {
+  ctx.session = null
+
+  if (!ctx.session){
+    console.log("退出"+ctx.session.isNew);
+  }
+  ctx.cookies.set("username", null, {
+    maxAge: 0
+  })
+  ctx.cookies.set("uid", null, {
+    maxAge: 0
+  })
+
+  // 重定向到首页
+  ctx.redirect("/")
+
+}

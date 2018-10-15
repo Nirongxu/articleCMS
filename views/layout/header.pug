@@ -17,8 +17,10 @@ nav.main-navigation
                         a(href="#") 导航
             .col-lg-2
                 p.login
-                    if user
+                    if session && !session.isNew
+                        span.name= session.username
+                        a(href="/user/logout") 退出
+
+                    else
                         a(href="/login") 注册
                         a(href="/login") 登录
-                    else
-                      span.name(href="javascript:void(0)") 倪荣旭

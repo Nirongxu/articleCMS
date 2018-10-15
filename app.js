@@ -27,8 +27,11 @@ const CONFIG = {
   rolling: true
 }
 
+// 注册session
+app.use(session(CONFIG, app))
+
 // 注册日志模块
-app.use(logger())
+// app.use(logger())
 
 // 配置静态资源目录
 app.use(static(join(__dirname, "static")))
@@ -40,11 +43,6 @@ app.use(views(join(__dirname, "views"),{
 
 // 配置 koa-body 处理post请求
 app.use(body())
-
-// 注册session
-app.use(session(CONFIG), app)
-
-
 
 app.use(router.routes()).use(router.allowedMethods())
 
