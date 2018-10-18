@@ -39,8 +39,8 @@
                 this.dialogLockScreen();
                 dialog.show();
             }
-            else
-            {
+            else 
+            {      
                 var dialogContent = "<textarea placeholder=\"coding now....\" style=\"display:none;\">" + selection + "</textarea>";
 
                 dialog = this.createDialog({
@@ -72,9 +72,9 @@
                             {
                                 codeTexts[i] = "    " + codeTexts[i];
                             }
-
+                            
                             codeTexts = codeTexts.join("\n");
-
+                            
                             if (cursor.ch !== 0) {
                                 codeTexts = "\r\n\r\n" + codeTexts;
                             }
@@ -85,7 +85,7 @@
 
                             return false;
                         }],
-                        cancel : [lang.buttons.cancel, function() {
+                        cancel : [lang.buttons.cancel, function() {                                  
                             this.hide().lockScreen(false).hideMask();
 
                             return false;
@@ -93,7 +93,7 @@
                     }
                 });
             }
-
+		
 			var cmConfig = {
 				mode                      : "text/html",
 				theme                     : settings.theme,
@@ -114,17 +114,17 @@
 				showTrailingSpace         : true,
 				highlightSelectionMatches : true
 			};
-
+			
 			var textarea = dialog.find("textarea");
 			var cmObj    = dialog.find(".CodeMirror");
 
-			if (dialog.find(".CodeMirror").length < 1)
+			if (dialog.find(".CodeMirror").length < 1) 
 			{
 				cmEditor = exports.$CodeMirror.fromTextArea(textarea[0], cmConfig);
 				cmObj    = dialog.find(".CodeMirror");
 
 				cmObj.css({
-					"float"   : "none",
+					"float"   : "none", 
 					margin    : "0 0 5px",
 					border    : "1px solid #ddd",
 					fontSize  : settings.fontSize,
@@ -135,8 +135,8 @@
 				cmEditor.on("change", function(cm) {
 					textarea.val(cm.getValue());
 				});
-			}
-			else
+			} 
+			else 
 			{
 				cmEditor.setValue(cm.getSelection());
 			}
@@ -146,7 +146,7 @@
 
 	// CommonJS/Node.js
 	if (typeof require === "function" && typeof exports === "object" && typeof module === "object")
-    {
+    { 
         module.exports = factory;
     }
 	else if (typeof define === "function")  // AMD/CMD/Sea.js
@@ -159,11 +159,11 @@
 
 		} else { // for Sea.js
 			define(function(require) {
-                var editormd = require("../../editormd");
+                var editormd = require("./../../editormd");
                 factory(editormd);
             });
 		}
-	}
+	} 
 	else
 	{
         factory(window.editormd);

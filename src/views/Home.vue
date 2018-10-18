@@ -195,7 +195,6 @@ export default {
     },
     removeTab (tabItem) {
       console.log(this.isActive)
-      debugger
       let index = this.tabnavBox.findIndex(function (value, key) {
         return value.path == tabItem.path
       })

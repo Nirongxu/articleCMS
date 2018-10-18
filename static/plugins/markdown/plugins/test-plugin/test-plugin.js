@@ -37,10 +37,10 @@
 		};
 
 	};
-
+    
 	// CommonJS/Node.js
 	if (typeof require === "function" && typeof exports === "object" && typeof module === "object")
-    {
+    { 
         module.exports = factory;
     }
 	else if (typeof define === "function")  // AMD/CMD/Sea.js
@@ -53,11 +53,11 @@
 
 		} else { // for Sea.js
 			define(function(require) {
-                var editormd = require("../../editormd");
+                var editormd = require("./../../editormd");
                 factory(editormd);
             });
 		}
-	}
+	} 
 	else
 	{
         factory(window.editormd);

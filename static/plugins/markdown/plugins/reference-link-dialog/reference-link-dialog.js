@@ -32,23 +32,23 @@
 			cm.focus();
 
             if (editor.find("." + dialogName).length < 1)
-            {
+            {      
                 var dialogHTML = "<div class=\"" + classPrefix + "form\">" +
                                         "<label>" + dialogLang.name + "</label>" +
-                                        "<input type=\"text\" value=\"[" + ReLinkId + "]\" data-name />" +
+                                        "<input type=\"text\" value=\"[" + ReLinkId + "]\" data-name />" +  
                                         "<br/>" +
                                         "<label>" + dialogLang.urlId + "</label>" +
                                         "<input type=\"text\" data-url-id />" +
                                         "<br/>" +
                                         "<label>" + dialogLang.url + "</label>" +
-                                        "<input type=\"text\" value=\"http://\" data-url />" +
+                                        "<input type=\"text\" value=\"http://\" data-url />" + 
                                         "<br/>" +
                                         "<label>" + dialogLang.urlTitle + "</label>" +
                                         "<input type=\"text\" value=\"" + selection + "\" data-title />" +
                                         "<br/>" +
                                     "</div>";
 
-                dialog = this.createDialog({
+                dialog = this.createDialog({   
                     name       : dialogName,
                     title      : dialogLang.title,
                     width      : 380,
@@ -101,7 +101,7 @@
 
                             return false;
                         }],
-                        cancel : [lang.buttons.cancel, function() {
+                        cancel : [lang.buttons.cancel, function() {                                   
                             this.hide().lockScreen(false).hideMask();
 
                             return false;
@@ -124,10 +124,10 @@
 		};
 
 	};
-
+    
 	// CommonJS/Node.js
 	if (typeof require === "function" && typeof exports === "object" && typeof module === "object")
-    {
+    { 
         module.exports = factory;
     }
 	else if (typeof define === "function")  // AMD/CMD/Sea.js
@@ -140,11 +140,11 @@
 
 		} else { // for Sea.js
 			define(function(require) {
-                var editormd = require("../../editormd");
+                var editormd = require("./../../editormd");
                 factory(editormd);
             });
 		}
-	}
+	} 
 	else
 	{
         factory(window.editormd);
