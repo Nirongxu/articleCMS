@@ -19,13 +19,14 @@
     </el-form>
     <markdown :onchange="change"></markdown>
     <el-row type="flex" class="row-bg" justify="end">
-      <el-button class="subBtn" type="primary" >发布</el-button>
+      <el-button class="subBtn" type="primary" @click="submitArticle">发布</el-button>
     </el-row>
   </div>
 </template>
 
 <script>
 import Markdown from '../../components/markdown/markdown-editor'
+import axios from 'axios'
 export default {
   name: 'addArticle',
   data () {
@@ -64,6 +65,17 @@ export default {
     },
     handleSelect (item) {
       console.log(item)
+    },
+    submitArticle () {
+      axios.post('http://localhost:3000/addArticle', {
+        data: this.article
+      })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   },
   mounted () {

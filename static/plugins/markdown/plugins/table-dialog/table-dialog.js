@@ -78,7 +78,7 @@
 
 			var lang        = this.lang;
 			var dialogLang  = lang.dialog.table;
-			
+
 			var dialogContent = [
 				"<div class=\"editormd-form\" style=\"padding: 13px 0;\">",
 				"<label>" + dialogLang.cellsLabel + "</label>",
@@ -89,14 +89,14 @@
 				"</div>"
 			].join("\n");
 
-			if (editor.find("." + dialogName).length > 0) 
+			if (editor.find("." + dialogName).length > 0)
 			{
                 dialog = editor.find("." + dialogName);
 
 				this.dialogShowMask(dialog);
 				this.dialogLockScreen();
 				dialog.show();
-			} 
+			}
 			else
 			{
 				dialog = this.createDialog({
@@ -127,14 +127,14 @@
 								right    : hrLine + ":"
 							};
 
-							if ( rows > 1 && cols > 0) 
+							if ( rows > 1 && cols > 0)
 							{
-								for (var r = 0, len = rows; r < len; r++) 
+								for (var r = 0, len = rows; r < len; r++)
 								{
 									var row = [];
 									var head = [];
 
-									for (var c = 0, len2 = cols; c < len2; c++) 
+									for (var c = 0, len2 = cols; c < len2; c++)
 									{
 										if (r === 1) {
 											head.push(alignSign[align]);
@@ -146,7 +146,7 @@
 									if (r === 1) {
 										table += "| " + head.join(" | ") + " |" + "\n";
 									}
-									
+
 									table += "| " + row.join( (cols === 1) ? "" : " | " ) + " |" + "\n";
 								}
 							}
@@ -158,7 +158,7 @@
                             return false;
                         }],
 
-                        cancel : [lang.buttons.cancel, function() {                                   
+                        cancel : [lang.buttons.cancel, function() {
                             this.hide().lockScreen(false).hideMask();
 
                             return false;
@@ -175,7 +175,7 @@
 				var _lang  = dialogLang.aligns;
 				var values = ["_default", "left", "center", "right"];
 
-				for (var i = 0, len = icons.length; i < len; i++) 
+				for (var i = 0, len = icons.length; i < len; i++)
 				{
 					var checked = (i === 0) ? " checked=\"checked\"" : "";
 					var btn = "<a href=\"javascript:;\"><label for=\"editormd-table-dialog-radio"+i+"\" title=\"" + _lang[i] + "\">";
@@ -189,10 +189,10 @@
 		};
 
 	};
-    
+
 	// CommonJS/Node.js
 	if (typeof require === "function" && typeof exports === "object" && typeof module === "object")
-    { 
+    {
         module.exports = factory;
     }
 	else if (typeof define === "function")  // AMD/CMD/Sea.js
@@ -205,11 +205,11 @@
 
 		} else { // for Sea.js
 			define(function(require) {
-                var editormd = require("./../../editormd");
+                var editormd = require("../../editormd");
                 factory(editormd);
             });
 		}
-	} 
+	}
 	else
 	{
         factory(window.editormd);
