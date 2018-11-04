@@ -9,7 +9,17 @@ const { Schema } = require("../database/db.config")
 
 const userSchema = new Schema({
   username: String,
-  password: String
+  password: String,
+  role: {
+    type: String,
+    default: 1
+  },
+  avatar: {
+    type: String,
+    default: '/public/avatar/icon.jpg'
+  },
+  articleNum: Number,
+  commentNum: Number
 }, {versionKey: false})
 
 module.exports = userSchema

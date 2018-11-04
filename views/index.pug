@@ -5,42 +5,44 @@ block css
 
 block main
     main.col-lg-9.main-content
-        article.articleList
-            .articleTitle.mb10
-                p
-                    a.classify(href="#") javascript
-                    a.title(href="#") 标题标题标题标题标题标题标题标题标题标题
-            |
-            .row
-                .col-lg-3.articleThumbnail
-                    a(href="#")
-                        img(src="/images/timthumb.jpg")
-                |
-                .col-lg-9.articleAbstract
-                    p
-                        span.abstract 摘要:
-                        | 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
-                        |                                 摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容...
+        each item in artList
+            article.articleList
+                .row
+                    .articleTitle.mb10
+                        p
+                            a.classify(href="#")= item.tag[0]
+                            a.title(href=`/article/${item._id}`)= item.title
+                    |
+                .row
+                    .col-lg-3.articleThumbnail
+                        a(href=`/article/${item._id}`)
+                            img(src= item.author.avatar)
+                    |
+                    .col-lg-9.articleAbstract
+                        p
+                            span.abstract 摘要:
+                            = item.content.text.slice(0,130) + "..."
+                            a.ydqw.pl5(href=`/article/${item._id}`) 阅读全文
+                    |
+                    p.authSpan
+                        span.muted
+                            i.fa.fa-user
+                            = item.author.username
                         |
-                        a.ydqw.pl5(href="#") 阅读全文
-                |
-                p.authSpan
-                    span.muted
-                        i.fa.fa-user
-                        |  夏洛克丶旭
-                    |
-                    span.muted
-                        i.fa.fa-clock-o
-                        |  2018-01-01
-                    |
-                    span.muted
-                        i.fa.fa-eye
-                        |  阅读(500)
-                    |
-                    span.muted.articlepl
-                        i.fa.fa-commenting
-                        a(href="#") 评论(30)
-                    |
-                    span.muted.dz
-                        i.fa.fa-thumbs-up
-                        | 点赞(500)
+                        span.muted
+                            i.fa.fa-clock-o
+                            = item.created.toLocaleString()
+                        |
+                        span.muted
+                            i.fa.fa-eye
+                            |  阅读( #{item.read} )
+                        |
+                        span.muted.articlepl
+                            i.fa.fa-commenting
+                            a(href=`/article/${item._id}#comment`) 评论( #{item.comment} )
+                        |
+                        span.muted.dz
+                            i.fa.fa-thumbs-up
+                            | 点赞(#{item.praise})
+
+        #laypage.mt50(data-maxnum= maxNum)

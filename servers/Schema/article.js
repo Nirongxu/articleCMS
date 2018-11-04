@@ -6,12 +6,33 @@
  */
 const { Schema } = require('../database/db.config')
 
+const Objectid = Schema.Types.ObjectId
+
 const articleSchema = new Schema({
-  title: String,
-  tag: String,
+  title: {
+    type: String,
+    trim: true
+  },
+  tag: Array,
   top: Boolean,
-  content: String,
-  author: String
-}, {versionKey: false})
+  content: {
+    markdown: String,
+    html: String,
+    text: String
+  },
+  author: {
+    type: Objectid,
+    ref: "users"
+  }, // 关联 users表
+  read: Number,
+  comment: Number,
+  praise: Number
+
+}, {
+  versionKey: false,
+  timestamps: {
+    createdAt: "created"
+  }
+})
 
 module.exports = articleSchema

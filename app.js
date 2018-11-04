@@ -13,6 +13,7 @@ const logger = require("koa-logger")
 const body = require("koa-body")
 const { join } = require("path")
 const session = require("koa-session")
+var cors = require('koa2-cors');
 
 const app = new Koa
 
@@ -30,6 +31,7 @@ const CONFIG = {
 // 注册session
 app.use(session(CONFIG, app))
 
+app.use(cors())
 // 注册日志模块
 // app.use(logger())
 
@@ -49,3 +51,36 @@ app.use(router.routes()).use(router.allowedMethods())
 app.listen(3000, () => {
   console.log("项目启动成功")
 })
+
+// 系统自动生成管理员
+{
+  const {db} = require('./servers/database/db.config')
+  const userSchema = require('./servers/Schema/user')
+  const encrypt = require('./servers/util/encrypt')
+
+  const User = db.model('users', userSchema)
+
+  User.find({username: "admin"})
+    .then(data => {
+      if (data.length === 0){
+        new User({
+          username: "admin",
+          password: encrypt("admin"),
+          role: 0,
+          articleNum: 0,
+          commentNum: 0
+        })
+          .save()
+          .then(data => {
+            console.log(`管理员账号检查：
+            系统生成默认管理员:用户名 -> admin, 密码 -> admin`)
+          })
+          .catch(err => {
+            console.log("管理员账号检查失败")
+          })
+      } else {
+        console.log(`管理员账号检查：
+        系统检查到已存在默认管理员:用户名 -> admin, 密码 -> admin`)
+      }
+    })
+}

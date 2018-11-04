@@ -5,19 +5,27 @@
         <el-input v-model="article.title"></el-input>
       </el-form-item>
       <el-form-item label="标签">
-        <el-autocomplete
-          class="inline-input"
+
+        <el-select
           v-model="article.tag"
-          :fetch-suggestions="querySearch"
-          placeholder="请输入内容"
-          @select="handleSelect"
-        ></el-autocomplete>
+          multiple
+          collapse-tags
+          style="margin-left: 20px;"
+          placeholder="请选择">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
+
       </el-form-item>
       <el-form-item label="是否置顶">
         <el-switch v-model="article.top"></el-switch>
       </el-form-item>
     </el-form>
-    <markdown :onchange="change"></markdown>
+    <Markdown :onchange="change"></Markdown>
     <el-row type="flex" class="row-bg" justify="end">
       <el-button class="subBtn" type="primary" @click="submitArticle">发布</el-button>
     </el-row>
@@ -26,60 +34,86 @@
 
 <script>
 import Markdown from '../../components/markdown/markdown-editor'
-import axios from 'axios'
 export default {
   name: 'addArticle',
   data () {
     return {
+      options: [{
+        value: 'vue',
+        label: 'vue'
+      }, {
+        value: 'js',
+        label: 'js'
+      }, {
+        value: 'node.js',
+        label: 'node.js'
+      }],
       article: {
         title: '',
-        tag: '',
+        tag: [],
         top: false,
-        content: {}
-      },
-      restaurants: []
+        content: ''
+      }
     }
   },
   components: {Markdown},
   methods: {
     change () {
-      console.log(arguments[0], this.article)
       this.article.content = arguments[0]
     },
-    querySearch (queryString, cb) {
-      var restaurants = this.restaurants
-      var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants
-      // 调用 callback 返回建议列表的数据
-      cb(results)
-    },
-    createFilter (queryString) {
-      return (restaurant) => {
-        return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0)
-      }
-    },
-    loadAll () {
-      return [
-        { 'value': 'vue' },
-        { 'value': 'node.js' }
-      ]
-    },
-    handleSelect (item) {
-      console.log(item)
-    },
     submitArticle () {
-      axios.post('http://localhost:3000/addArticle', {
-        data: this.article
+      if (!this.article.title) {
+        this.$message({
+          showClose: true,
+          message: '标题不能为空',
+          type: 'warning'
+        })
+        return false
+      }
+      if (!this.article.content) {
+        this.$message({
+          showClose: true,
+          message: '内容不能为空',
+          type: 'warning'
+        })
+        return false
+      }
+      let that = this
+      this.$axios.post('/api/addArticle', {
+        articleData: this.article
       })
         .then(function (response) {
-          console.log(response);
+          if (response.data.status) {
+            that.$message({
+              showClose: true,
+              message: response.data.msg,
+              type: 'success'
+            })
+            that.article = {
+              title: '',
+              tag: [],
+              top: false,
+              content: ''
+            }
+          } else {
+            that.$message({
+              showClose: true,
+              message: response.data.msg,
+              type: 'error'
+            })
+          }
         })
         .catch(function (error) {
-          console.log(error);
-        });
+          that.$message({
+            showClose: true,
+            message: '发表失败',
+            type: 'error'
+          })
+        })
     }
   },
   mounted () {
-    this.restaurants = this.loadAll()
+
   }
 }
 </script>

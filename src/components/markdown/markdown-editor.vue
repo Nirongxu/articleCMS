@@ -56,7 +56,7 @@ export default {
       (async () => {
         await this.fetchScript('/static/plugins/markdown/jquery.min.js')
         await this.fetchScript('/static/plugins/markdown/editormd.min.js')
-        // await this.fetchScript('/static/editor.md/editormd.js');
+        // await this.fetchScript('/static/editor.md/editormd.min.js')
         this.$nextTick(() => {
           let editor = window.editormd(this.editorId, this.getConfig())
           editor.on('load', () => {

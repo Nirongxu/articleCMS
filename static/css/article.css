@@ -66,6 +66,8 @@
 .w-e-text-container{
     height: 150px !important;
     border: none !important;
+    margin-top: 16px !important;
+    border-top: 1px solid #999 !important;
 }
 .w-e-text {
     overflow-y: auto !important;
@@ -76,4 +78,21 @@
 }
 .submit{
     width: 80px;
+}
+
+/**** 重写 markdown 样式 ****/
+.editormd-preview {
+  position: static;
+  display: block;
+  background: none;
+  width: 100%;
+}
+.editormd-html-preview, .editormd-preview-container {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.editormd-html-preview pre, .editormd-preview-container pre {
+  background: #e6e3e3;
+}
+.editormd-preview-container ol.linenums {
+  padding-left: 1.5em;
 }

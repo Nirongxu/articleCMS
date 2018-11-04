@@ -19,6 +19,8 @@ import Upload from '@/views/upload/upload.vue'
 import Markdown from '@/views/markdown/markdownView.vue'
 import NotFound from '@/page404.vue'
 import AddArticle from '@/views/article/addArticle.vue'
+import ArticleList from '@/views/article/articleList.vue'
+import Comment from '@/views/comment/comment.vue'
 
 Vue.use(Router)
 
@@ -70,6 +72,28 @@ export default new Router({
           iconCls: 'fa fa-meh-o', // 图标样式class
           name: '发表文章',
           component: AddArticle,
+          children: []
+        },
+        {
+          path: '/articleList',
+          iconCls: 'fa fa-meh-o', // 图标样式class
+          name: '文章管理',
+          component: ArticleList,
+          children: []
+        }
+      ]
+    },
+    {
+      path: '/',
+      iconCls: 'fa fa-paw', // 图标样式class
+      name: '评论管理',
+      component: Home,
+      children: [
+        {
+          path: '/comment',
+          iconCls: 'fa fa-meh-o', // 图标样式class
+          name: '评论管理',
+          component: Comment,
           children: []
         }
       ]

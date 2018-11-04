@@ -1,6 +1,6 @@
 <template>
   <div>
-    <markdown :onchange="change"></markdown>
+    <Markdown :onchange="change"></Markdown>
   </div>
 </template>
 

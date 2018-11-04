@@ -25,7 +25,9 @@ exports.reg = async (ctx, next) => {
       // 保存数据库之前先加密，使用自定义的加密模块 encrypt
       const user_db = new User({
         username,
-        password: encrypt(password)
+        password: encrypt(password),
+        articleNum: 0,
+        commentNum: 0
       })
       user_db.save((err, data) => {
         if (err) {
@@ -56,9 +58,8 @@ exports.login = async (ctx, next) => {
   await new Promise((resolve, reject) => {
     User.find({username}, (err, data) => {
       if (err) return reject(err)
-      if (data.length === 0) return reslove('用户名不存在')
+      if (data.length === 0) return resolve('用户名不存在')
       if (data[0].password === encrypt(password)) {
-        debugger
         // 在浏览器 cookie 里设置 账号密码
         ctx.cookies.set('username', username, {
           domain: 'localhost',
@@ -82,12 +83,13 @@ exports.login = async (ctx, next) => {
         // 服务端保存session
         ctx.session = {
           username,
-          uid: data[0]._id
+          uid: data[0]._id,
+          avatar: data[0].avatar
         }
 
-        return reslove('1')
+        return resolve('1')
       }
-      return reslove('密码错误')
+      return resolve('密码错误')
     })
   }).then(data => {
     ctx.body = {
@@ -119,9 +121,6 @@ exports.keepLog = async (ctx, next) => {
 exports.logout = async (ctx, next) => {
   ctx.session = null
 
-  if (!ctx.session) {
-    console.log('退出' + ctx.session.isNew)
-  }
   ctx.cookies.set('username', null, {
     maxAge: 0
   })
@@ -131,4 +130,28 @@ exports.logout = async (ctx, next) => {
 
   // 重定向到首页
   ctx.redirect('/')
+}
+
+//  用户的头像上传
+exports.upload = async ctx => {
+  const filename = ctx.req.file.filename
+  console.log(filename)
+  let data = {}
+  await User.updateMany({_id: global.uid}, {$set: {avatar: '/public/avatar/' + filename}}, (err, res) => {
+    // console.log(ctx)
+    // console.log(User.find({_id: ctx.session.uid}))
+    if (err) {
+      data = {
+        status: 0,
+        msg: '上传失败'
+      }
+    } else {
+      data = {
+        status: 1,
+        msg: '上传成功'
+      }
+    }
+  })
+
+  ctx.body = data
 }
