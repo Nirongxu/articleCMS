@@ -69,9 +69,9 @@ export default {
           let editor = window.editormd(this.editorId, this.getConfig())
           editor.on('load', () => {
             setTimeout(() => { // hack bug: 一个页面多个编辑器只能初始化其中一个数据问题
-              this.editorLoaded = true
-              this.initData && editor.setMarkdown(this.initData)
-            }, this.initDataDelay)
+              that.editorLoaded = true
+              that.initData && editor.setMarkdown(that.initData)
+            }, that.initDataDelay)
           })
           this.onchange && editor.on('change', () => {
             let html = editor.getPreviewedHTML()

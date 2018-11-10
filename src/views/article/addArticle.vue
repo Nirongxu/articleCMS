@@ -24,7 +24,7 @@
         <el-switch v-model="article.top"></el-switch>
       </el-form-item>
     </el-form>
-    <Markdown :onchange="change" v-bind:initData="article.content.markdown"></Markdown>
+    <Markdown :onchange="change" v-bind:initData="initData"></Markdown>
     <el-row type="flex" class="row-bg" justify="end">
       <el-button class="subBtn" type="primary" @click="submitArticle">发布</el-button>
     </el-row>
@@ -43,7 +43,8 @@ export default {
         tag: [],
         top: false,
         content: ''
-      }
+      },
+      initData: ''
     }
   },
   components: {Markdown},
@@ -123,6 +124,7 @@ export default {
         if (response.status === 200) {
           console.log(response)
           that.article = response.data
+          that.initData = response.data.content.markdown
           return false
         }
       })
