@@ -362,6 +362,13 @@ export default {
       &::-webkit-scrollbar {
         display: none;
       }
+      .fa{
+        vertical-align: middle;
+        margin-right: 5px;
+        width: 24px;
+        text-align: center;
+        font-size: 18px;
+      }
       .el-menu-item{
         background-color: #020f1d !important;
         border-bottom: 1px solid #020f1d;

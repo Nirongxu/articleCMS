@@ -10,7 +10,7 @@ block main
                 .row
                     .articleTitle.mb10
                         p
-                            a.classify(href="#")= item.tag[0]
+                            a.classify(href="javascript:void(0)")= item.tag[0]
                             a.title(href=`/article/${item._id}`)= item.title
                     |
                 .row
@@ -35,14 +35,14 @@ block main
                         |
                         span.muted
                             i.fa.fa-eye
-                            |  阅读( #{item.read} )
+                            |  阅读( #{item.readNum} )
                         |
                         span.muted.articlepl
                             i.fa.fa-commenting
-                            a(href=`/article/${item._id}#comment`) 评论( #{item.comment} )
+                            a(href=`/article/${item._id}#comment`) 评论( #{item.commentNum} )
                         |
                         span.muted.dz
                             i.fa.fa-thumbs-up
-                            | 点赞(#{item.praise})
+                            a.dz(href=`/article/${item._id}#zan`) 点赞(#{item.praiseNum})
 
-        #laypage.mt50(data-maxnum= maxNum)
+        #laypage.mt50(data-maxnum= maxNum, data-path= nav)

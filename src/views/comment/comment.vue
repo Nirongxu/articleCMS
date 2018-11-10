@@ -3,7 +3,7 @@
     <el-table
       :data="commentData"
       style="width: 100%"
-      max-height="250">
+      max-height="550">
       <el-table-column
         fixed
         prop="created"
@@ -16,8 +16,7 @@
       </el-table-column>
       <el-table-column
         prop="content.text"
-        label="评论内容"
-        width="300">
+        label="评论内容">
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -43,12 +42,12 @@ export default {
     }
   },
   methods: {
-    deleteRow (index, rows) {
-      console.log(index, rows)
+    deleteRow (index, row) {
+      console.log(index, row)
       let that = this
       this.$axios.post('/api/delComment', {
-        id: rows._id,
-        articleId: rows.article._id
+        id: row._id,
+        articleId: row.article._id
       })
         .then(response => {
           console.log(response)

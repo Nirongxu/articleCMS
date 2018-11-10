@@ -60,3 +60,14 @@ $('.submit').click(() => {
     })
   })
 })
+
+//  点赞
+$('.dianzan').click(() => {
+  $.post('/setpraiseNum', {
+    articleId:  $('.dianzan').data('artid')
+  }, (data) => {
+    layer.tips(data.msg, '.zanico', {
+      tips: 1
+    })
+  })
+})

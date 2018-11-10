@@ -21,16 +21,24 @@ $(function () {
   })
 })
 
+let maxnum = $('#laypage').data('maxnum')
+let pathdata = $('#laypage').data('path')
+if (!pathdata) {
+  pathdata = ''
+}
+
 layui.laypage.render({
   elem: 'laypage',
-  count: $('#laypage').data('maxnum'),
+  count: maxnum,
   limit: 10,
   groups: 3,
-  curr: location.pathname.replace('/page/', ''),
+  curr: location.pathname.replace(`/${pathdata}/page/`, ''),
   jump (obj, f) {
+
     $('#laypage a').each((i, v) => {
-      let pageValue = `/page/${$(v).data('page')}`
+      let pageValue = `/${pathdata}/page/${$(v).data('page')}`
       v.href = pageValue
     })
+    $('#laypage a.layui-disabled').attr({'href': 'javascript:void(0)'})
   }
 })

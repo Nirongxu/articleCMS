@@ -15,8 +15,7 @@
           <el-option
             v-for="item in options"
             :key="item.value"
-            :label="item.label"
-            :value="item.value">
+            :value="item.name">
           </el-option>
         </el-select>
 
@@ -25,7 +24,7 @@
         <el-switch v-model="article.top"></el-switch>
       </el-form-item>
     </el-form>
-    <Markdown :onchange="change"></Markdown>
+    <Markdown :onchange="change" v-bind:initData="article.content.markdown"></Markdown>
     <el-row type="flex" class="row-bg" justify="end">
       <el-button class="subBtn" type="primary" @click="submitArticle">发布</el-button>
     </el-row>
@@ -38,16 +37,7 @@ export default {
   name: 'addArticle',
   data () {
     return {
-      options: [{
-        value: 'vue',
-        label: 'vue'
-      }, {
-        value: 'js',
-        label: 'js'
-      }, {
-        value: 'node.js',
-        label: 'node.js'
-      }],
+      options: [],
       article: {
         title: '',
         tag: [],
@@ -113,7 +103,32 @@ export default {
     }
   },
   mounted () {
-
+    let id = this.$route.query.articleId
+    let that = this
+    this.$axios.get('/api/setting/getNavClassify')
+      .then(function (response) {
+        if (response.status === 200) {
+          console.log(response)
+          response.data.navList.shift()
+          that.options = response.data.navList
+          return false
+        }
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+    if (!id) return false
+    this.$axios.get('/api/article/' + id + '&edit')
+      .then(function (response) {
+        if (response.status === 200) {
+          console.log(response)
+          that.article = response.data
+          return false
+        }
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
   }
 }
 </script>

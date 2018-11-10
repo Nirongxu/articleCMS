@@ -4,19 +4,13 @@
  * Date: 2018/10/31
  * Description: 文件描述
  */
-const {db} = require('../database/db.config')
-const commentSchema = require('../Schema/comment')
-const articleSchema = require('../Schema/article')
-const userSchema = require('../Schema/user')
-
-// 通过 db 对象创建操作comments数据库的模型对象
-const Comment = db.model('comments', commentSchema)
-const Article = db.model('articles', articleSchema)
-const User = db.model('users', userSchema)
+const Comment = require('../Models/comment')
+const Article = require('../Models/article')
+const User = require('../Models/user')
 
 //  保存评论
 exports.addComment = async ctx => {
-  console.log('保存评论'+ctx)
+  console.log('保存评论' + ctx)
   let message = {
     status: 0,
     icon: 5,
@@ -39,7 +33,7 @@ exports.addComment = async ctx => {
       }
       // 更新文章计数器
       Article
-        .updateOne({_id: data.article}, {$inc: {comment: 1}}, err => {
+        .updateOne({_id: data.article}, {$inc: {commentNum: 1}}, err => {
           if (err) console.log(err)
         })
       //  更新用户评论计数器
@@ -60,12 +54,13 @@ exports.addComment = async ctx => {
 }
 
 //  查询当前用户所有评论
-exports.commentlist = async ctx => {
+exports.commentList = async ctx => {
   if (ctx.session.isNew) {
-    return ctx.body = {
+    ctx.body = {
       msg: '用户未登录',
       status: 0
     }
+    return false
   }
   const uid = ctx.session.uid
   const data = await Comment.find({author: uid}).populate('article', 'title')
@@ -76,20 +71,21 @@ exports.commentlist = async ctx => {
 exports.delComment = async ctx => {
   //  评论 id
   const commentId = ctx.request.body.id
-  const articleId = ctx.request.body.articleId
-  console.log(ctx.request.body)
-  const uid = ctx.session.uid
 
+  let res = {
+    status: 1,
+    msg: '删除成功'
+  }
   //  删除评论
-  await Comment.deleteOne({_id: commentId}, err => {
-    if (err) return err
-    ctx.body = {
-      status: 1,
-      msg: '删除成功'
-    }
-  })
+  await Comment.findById(commentId)
+    .then(data => data.remove())
+    .catch(err => {
+      debugger
+      res = {
+        status: 0,
+        msg: err
+      }
+    })
 
-  //  让文章的计数器 -1
-  await Article.updateOne({_id: articleId}, {$inc: {comment: -1}})
-  await User.updateOne({_id: uid}, {$inc: {commentNum: -1}})
+  ctx.body = res
 }

@@ -1,26 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import CommerViews from '@/views/commerViews.vue'
 import Login from '@/views/login/index.vue'
 import Home from '@/views/Home.vue'
 import HomeMain from '@/views/mainIndex.vue'
-import Icon from '@/views/icon/index'
-import Erji from '@/views/duoji/erji.vue'
-import Erji2 from '@/views/duoji/erji2.vue'
-import Sanji from '@/views/duoji/sanji.vue'
-import Sanji2 from '@/views/duoji/sanji2.vue'
-import Siji from '@/views/duoji/siji.vue'
-import Wuji from '@/views/duoji/wuji.vue'
-import Transfer from '@/views/transfer/transfer.vue'
-import DataTable from '@/views/table/dataTables.vue'
-import FilterTable from '@/views/table/filterTable.vue'
-import DragTabe from '@/views/table/dragTabe.vue'
-import Upload from '@/views/upload/upload.vue'
-import Markdown from '@/views/markdown/markdownView.vue'
 import NotFound from '@/page404.vue'
 import AddArticle from '@/views/article/addArticle.vue'
 import ArticleList from '@/views/article/articleList.vue'
 import Comment from '@/views/comment/comment.vue'
+import User from '@/views/user/userList.vue'
+import Upload from '@/views/upload/upload.vue'
+import NavClassify from '@/views/syssetting/navClassify.vue'
 
 Vue.use(Router)
 
@@ -34,13 +23,6 @@ export default new Router({
     {
       path: '/login',
       component: Login,
-      name: '',
-      hidden: true,
-      children: []
-    },
-    {
-      path: '/404',
-      component: NotFound,
       name: '',
       hidden: true,
       children: []
@@ -63,21 +45,21 @@ export default new Router({
     },
     {
       path: '/',
-      iconCls: 'fa fa-paw', // 图标样式class
+      iconCls: 'el-icon-document', // 图标样式class
       name: '文章管理',
       component: Home,
       children: [
         {
           path: '/addArticle',
-          iconCls: 'fa fa-meh-o', // 图标样式class
+          iconCls: 'el-icon-edit-outline', // 图标样式class
           name: '发表文章',
           component: AddArticle,
           children: []
         },
         {
           path: '/articleList',
-          iconCls: 'fa fa-meh-o', // 图标样式class
-          name: '文章管理',
+          iconCls: 'fa fa-list-ol', // 图标样式class
+          name: '文章列表',
           component: ArticleList,
           children: []
         }
@@ -85,14 +67,14 @@ export default new Router({
     },
     {
       path: '/',
-      iconCls: 'fa fa-paw', // 图标样式class
+      iconCls: 'fa fa-comments-o', // 图标样式class
       name: '评论管理',
       component: Home,
       children: [
         {
           path: '/comment',
-          iconCls: 'fa fa-meh-o', // 图标样式class
-          name: '评论管理',
+          iconCls: 'fa fa-commenting-o', // 图标样式class
+          name: '评论列表',
           component: Comment,
           children: []
         }
@@ -100,73 +82,21 @@ export default new Router({
     },
     {
       path: '/',
-      iconCls: 'fa fa-paw', // 图标样式class
-      name: '图标',
+      iconCls: 'fa fa-users', // 图标样式class
+      name: '用户管理',
       component: Home,
       children: [
         {
-          path: '/icon',
-          iconCls: 'fa fa-meh-o', // 图标样式class
-          name: '图标',
-          component: Icon,
-          children: []
-        }
-      ]
-    },
-    {
-      path: '/',
-      iconCls: 'fa fa-server', // 图标样式class
-      name: '穿梭框',
-      component: Home,
-      children: [
-        {
-          path: '/transfer',
-          iconCls: 'fa fa-server', // 图标样式class
-          name: '穿梭框',
-          component: Transfer,
-          children: []
-        }
-      ]
-    },
-    {
-      path: '/',
-      iconCls: 'fa fa-server', // 图标样式class
-      name: '表格',
-      component: Home,
-      children: [
-        {
-          path: '/dataTable',
-          iconCls: 'fa fa-server', // 图标样式class
-          name: '多选数据表格',
-          component: DataTable,
+          path: '/userList',
+          iconCls: 'fa fa-address-book-o', // 图标样式class
+          name: '用户列表',
+          component: User,
           children: []
         },
         {
-          path: '/filterTable',
-          iconCls: 'fa fa-server', // 图标样式class
-          name: '筛选表格',
-          component: FilterTable,
-          children: []
-        },
-        {
-          path: '/dragTabe',
-          iconCls: 'fa fa-server', // 图标样式class
-          name: '拖拽排序',
-          component: DragTabe,
-          children: []
-        }
-      ]
-    },
-    {
-      path: '/',
-      iconCls: 'fa fa-server', // 图标样式class
-      name: '上传',
-      component: Home,
-      children: [
-        {
-          path: '/upload',
-          iconCls: 'fa fa-server', // 图标样式class
-          name: '上传',
+          path: '/userAvatarUpload',
+          iconCls: 'fa fa-address-card-o', // 图标样式class
+          name: '头像上传',
           component: Upload,
           children: []
         }
@@ -174,93 +104,25 @@ export default new Router({
     },
     {
       path: '/',
-      iconCls: 'fa fa-server', // 图标样式class
-      name: '编辑器',
+      iconCls: 'el-icon-setting', // 图标样式class
+      name: '系统设置',
       component: Home,
       children: [
         {
-          path: '/markdown',
-          iconCls: 'fa fa-server', // 图标样式class
-          name: 'markdown',
-          component: Markdown,
+          path: '/navClassifies',
+          iconCls: 'el-icon-menu', // 图标样式class
+          name: '导航菜单',
+          component: NavClassify,
           children: []
         }
       ]
     },
     {
-      path: '/',
-      iconCls: 'fa fa-server',
-      name: '多级目录',
-      component: Home,
-      children: [
-        {
-          path: '/erji',
-          iconCls: 'fa fa-server',
-          name: '二级',
-          component: Erji,
-          children: []
-        },
-        {
-          path: '/erji2',
-          iconCls: 'fa fa-server',
-          name: '二级2',
-          component: Erji2,
-          children: []
-        },
-        {
-          path: '/erji6',
-          iconCls: 'fa fa-server',
-          name: '二级-1',
-          component: CommerViews,
-          children: [
-            {
-              path: '/sanji',
-              iconCls: 'fa fa-server',
-              name: '三级',
-              component: Sanji,
-              children: []
-            },
-            {
-              path: '/sanji1',
-              iconCls: 'fa fa-server',
-              name: '三级1',
-              component: Sanji2,
-              children: []
-            },
-            {
-              path: '/sanji2',
-              iconCls: 'fa fa-server',
-              name: '三级-1',
-              component: CommerViews,
-              children: [
-                {
-                  path: '/siji',
-                  iconCls: 'fa fa-server',
-                  name: '四级',
-                  component: Siji,
-                  children: []
-                },
-                {
-                  path: '/siji1',
-                  iconCls: 'fa fa-server',
-                  name: '四级-1',
-                  component: CommerViews,
-                  children: [
-                    {
-                      path: '/wuji',
-                      iconCls: 'fa fa-server',
-                      name: '五级',
-                      component: Wuji,
-                      children: []
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      path: '/*',
+      component: NotFound,
+      name: '',
+      hidden: true,
+      children: []
     }
-
   ]
 })

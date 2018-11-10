@@ -35,4 +35,17 @@ const commentSchema = new Schema({
   }
 })
 
+//  mongoose 删除评论的钩子函数
+commentSchema.post('remove', doc => {
+  const Article = require('../Models/article')
+  const User = require('../Models/user')
+  const {author, article} = doc
+
+  //  对应文章的评论数 -1
+  Article.updateOne({_id: article}, {$inc: {commentNum: -1}}).exec()
+
+  //  当前被删除评论的作者的评论数 -1
+  User.updateOne({_id: author}, {$inc: {commentNum: -1}}).exec()
+})
+
 module.exports = commentSchema

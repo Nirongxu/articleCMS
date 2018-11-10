@@ -3,18 +3,15 @@ header.main-header.pt40
         .row
             .col-lg-12
                 p.topTitle
-                    a 标题
+                    a 村头倪师傅
 nav.main-navigation
     .container
         .row
             .col-lg-10
                 ul
-                    li
-                        a(href="#") 导航
-                    li
-                        a(href="#") 导航
-                    li
-                        a(href="#") 导航
+                    each item in navList
+                        li
+                            a(href=`${item.href}`)= item.name
             .col-lg-2
                 p.login
                     if session && !session.isNew

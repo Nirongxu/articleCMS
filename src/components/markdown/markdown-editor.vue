@@ -32,6 +32,9 @@ export default {
     initDataDelay: {
       'type': Number, // 延迟初始化数据时间，单位毫秒
       'default': 0
+    },
+    articledara: {
+      'type': Object
     }
   },
   data: function () {
@@ -52,11 +55,16 @@ export default {
     getConfig: function () {
       return {...defaultConfig, ...this.config }
     },
+    setMarkdown: function (val) {
+      let editor = window.editormd(this.editorId, this.getConfig())
+      editor.setMarkdown(val)
+    },
     initEditor: function () {
       (async () => {
         await this.fetchScript('/static/plugins/markdown/jquery.min.js')
         await this.fetchScript('/static/plugins/markdown/editormd.min.js')
         // await this.fetchScript('/static/editor.md/editormd.min.js')
+        let that = this
         this.$nextTick(() => {
           let editor = window.editormd(this.editorId, this.getConfig())
           editor.on('load', () => {
@@ -73,6 +81,7 @@ export default {
               text: window.$(html).text()
             })
           })
+          console.log(this.articledara)
           this.editor = editor
         })
       })()
@@ -83,6 +92,7 @@ export default {
   },
   watch: {
     'initData': function (newVal) {
+      console.log(newVal)
       if (newVal) {
         this.editorLoaded && this.editor.setMarkdown(newVal)
       }

@@ -4,12 +4,9 @@
  * Date: 2018/10/12
  * Description: 注册登录
  */
-
-const {db} = require('../database/db.config')
-const userSchema = require('../Schema/user')
+const User = require('../Models/user')
+const Article = require('../Models/article')
 const encrypt = require('../util/encrypt')
-
-const User = db.model('users', userSchema)
 
 // 用户注册
 exports.reg = async (ctx, next) => {
@@ -154,4 +151,57 @@ exports.upload = async ctx => {
   })
 
   ctx.body = data
+}
+
+//  获取用户列表
+exports.userList = async ctx => {
+  if (ctx.session.isNew) {
+    ctx.body = {
+      msg: '用户未登录',
+      status: 0
+    }
+    return false
+  }
+  const data = await User.find().exec()
+  ctx.body = data
+}
+
+//  删除用户
+exports.delUser = async ctx => {
+  //  评论 id
+  const uid = ctx.request.body.id
+  const _id = global.uid
+  let res = {
+    status: 1,
+    msg: '删除成功'
+  }
+  await User.findById(_id)
+    .then(async data => {
+      console.log(uid === _id)
+      if (uid === _id || data.role === 0) {
+        res = {
+          status: 0,
+          msg: '删除失败:你未获得此权限'
+        }
+      } else {
+        //  删除用户
+        await User.findById(uid)
+          .then(data => {
+            data.remove()
+          })
+          .catch(err => {
+            res = {
+              status: 0,
+              msg: err
+            }
+          })
+      }
+    })
+    .catch(err => {
+      ctx.body = {
+        status: 0,
+        msg: err
+      }
+    })
+  ctx.body = res
 }

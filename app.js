@@ -52,13 +52,11 @@ app.listen(3000, () => {
   console.log("项目启动成功")
 })
 
-// 系统自动生成管理员
 {
-  const {db} = require('./servers/database/db.config')
-  const userSchema = require('./servers/Schema/user')
+  // 系统自动生成管理员
   const encrypt = require('./servers/util/encrypt')
-
-  const User = db.model('users', userSchema)
+  const User = require('./servers/Models/user')
+  const navClassify = require('./servers/Models/navClassify')
 
   User.find({username: "admin"})
     .then(data => {
@@ -81,6 +79,28 @@ app.listen(3000, () => {
       } else {
         console.log(`管理员账号检查：
         系统检查到已存在默认管理员:用户名 -> admin, 密码 -> admin`)
+      }
+    })
+
+  // 系统自动创建分类
+  navClassify.find()
+    .then(data => {
+      if (data.length < 1) {
+        new navClassify({
+          name: "全部",
+          href: "/index"
+        })
+          .save()
+          .then(data => {
+            console.log(`默认分类检查：
+            系统生成默认分类: "全部"`)
+          })
+          .catch(err => {
+            console.log("默认分类检查失败")
+          })
+      } else {
+        console.log(`默认分类检查：
+              系统检查到已存在默认分类: "全部"`)
       }
     })
 }

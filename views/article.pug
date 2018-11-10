@@ -8,8 +8,8 @@ block main
         article.articleList.articleCon
             .articleTitle.mb10
                 p
-                    a.classify(href='#')= article.tag[0]
-                    a.artTitle(href='javascript:void(0)',data-artid= article._id)= article.title
+                    a.classify(href='javascript:void(0)')= article.tag[0]
+                    a.artTitle(href='javascript:void(0)', data-artid= article._id)= article.title
             p.authSpan
                 span.muted
                     i.fa.fa-user
@@ -19,20 +19,20 @@ block main
                     = article.created.toLocaleString()
                 span.muted
                     i.fa.fa-eye
-                    |  阅读(#{article.read})
+                    |  阅读(#{article.readNum})
                 span.muted.articlepl
                     i.fa.fa-commenting
-                    a(href='#comment') 评论(#{article.comment})
+                    a(href='#comment') 评论(#{article.commentNum})
                 span.muted.dz
                     i.fa.fa-thumbs-up
-                    | 点赞(#{article.praise})
+                    a.dz(href=`#zan`) 点赞(#{article.praiseNum})
             .articleAbstract.mt40.mb40
                 .editormd-preview.editormd-preview-theme-default
                       .markdown-body.editormd-preview-container
                           != article.content.html
-                p.text-center.dianzan.mt50
+                p#zan.text-center.dianzan.mt50(data-artid= article._id)
                       span
-                          i.fa.fa-thumbs-up.fa-2x
+                          i.fa.fa-thumbs-up.fa-2x.zanico
                           |   赞
         #comment.publish
             h4.feedbackTitle.mb20 发表评论

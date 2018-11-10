@@ -1,40 +1,24 @@
 aside.col-lg-3.sidebar
     .widget.mb20
-        h4.title 阅读排行榜
+        h4.title 热门文章
         |
         .content
             ul
-                li
-                    a(href="#") 标题标题标题标题标题标题标题标题标题标题
-                |
-                li
-                    a(href="#") 标题标题标题标题标题标题标题标题标题标题
-                |
-                li
-                    a(href="#") 标题标题标题标题标题标题标题标题标题标题
-                |
-                li
-                    a(href="#") 标题标题标题标题标题标题标题标题标题标题
-                |
-                li
-                    a(href="#") 标题标题标题标题标题标题标题标题标题标题
+                each item in readList
+                    li
+                        a(href=`/article/${item._id}`)= item.title
         |
         p.upDown.text-center
             i.fa.fa-angle-double-down.fa-4x
     |
     .widget.mb20
-        h4.title 分类
+        h4.title 最多评论
         |
         .content
             ul
-                li
-                    a(href="#") Vue
-                |
-                li
-                    a(href="#") Node.js
-                |
-                li
-                    a(href="#") javascript
+                each item in commentList
+                    li
+                        a(href=`/article/${item._id}`)= item.title
         |
         p.upDown.text-center
             i.fa.fa-angle-double-down.fa-4x
