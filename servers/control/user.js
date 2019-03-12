@@ -58,7 +58,7 @@ exports.login = async (ctx, next) => {
       if (data.length === 0) return resolve('用户名不存在')
       if (data[0].password === encrypt(password)) {
         // 在浏览器 cookie 里设置 账号密码
-        ctx.cookies.set('username', username, {
+        ctx.cookies.set('access_token', username, {
           domain: 'localhost',
           path: '/',
           maxAge: 36e5,
@@ -84,6 +84,7 @@ exports.login = async (ctx, next) => {
           avatar: data[0].avatar
         }
 
+        global.uid = data[0]._id
         return resolve('1')
       }
       return resolve('密码错误')
@@ -118,7 +119,7 @@ exports.keepLog = async (ctx, next) => {
 exports.logout = async (ctx, next) => {
   ctx.session = null
 
-  ctx.cookies.set('username', null, {
+  ctx.cookies.set('access_token', null, {
     maxAge: 0
   })
   ctx.cookies.set('uid', null, {
@@ -132,7 +133,7 @@ exports.logout = async (ctx, next) => {
 //  用户的头像上传
 exports.upload = async ctx => {
   const filename = ctx.req.file.filename
-  console.log(filename)
+  console.log(global.uid)
   let data = {}
   await User.updateMany({_id: global.uid}, {$set: {avatar: '/public/avatar/' + filename}}, (err, res) => {
     // console.log(ctx)

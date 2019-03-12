@@ -48,7 +48,7 @@ block main
                         li
                             .commentParent
                                 .info
-                                    span.username
+                                    span.username.mainuser(data-mainuserId= item.author._id, data-commentId= item._id)
                                         img.userIco(src= item.author.avatar, align='center')
                                         = item.author.username
                                 .commentText
@@ -56,24 +56,18 @@ block main
                                 p.info.info-footer.text-right.mb5
                                     span.time= item.created.toLocaleString()
                                     a.btn-reply(href='javascript:;') 回复
-                                .commentChild
-                                    .info
-                                        span.username.pr10
-                                            img.userIco(src='/images/timthumb.jpg')
-                                            | 艾琳·艾德勒
-                                        span.hf 回复:
-                                        span 我就知道你动心了
-                                    p.info.info-footer.text-right
-                                        span.time 2017-04-18 18:26
-                                .commentChild
-                                    .info
-                                        span.username.pr10
-                                            img.userIco(src='/images/timthumb.jpg')
-                                            | 艾琳·艾德勒
-                                        span.hf 回复:
-                                        span 我就知道你动心了
-                                    p.info.info-footer.text-right
-                                        span.time 2017-04-18 18:26
+                                each childItem in item.reply
+                                    .commentChild
+                                        .info
+                                            span.username.pr10
+                                                img.userIco(src= childItem.author.avatar)
+                                                = childItem.author.username
+                                            span.hf 回复:
+                                            span
+                                                != childItem.content.text
+                                        p.info.info-footer.text-right
+                                            span.time= childItem.cretime.toLocaleString()
+
                     //li
                     //    .commentParent
                     //        .info

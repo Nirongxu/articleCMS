@@ -34,31 +34,71 @@ editor.customConfig.uploadImgShowBase64 = true
 editor.create()
 
 //  发送评论
-$('.submit').click(() => {
+$('.submit').click(function (){
   $('span.default', '#Editor').remove()
   if (!editor.txt.text()) {
     layer.msg('评论不能为空', {icon: 5})
     return false
   }
-  const data = {
-    content: {
-      html: editor.txt.html(),
-      text: editor.txt.text()
-    },
-    article: $('.artTitle').data('artid')
-  }
+  debugger
+  if (editor.txt.text().substring(0, 1) === '@'){
+    let index = editor.txt.text().search(" 回复:")
 
-  $.post('/comment', data, (data) => {
-    layer.msg(data.msg, {
-      time: 3000,
-      icon: data.icon,
-      end () {
-        if (data.status === 1) {
-          window.location.reload()
+    let editorText = editor.txt.text().substring(index + 4)
+    debugger
+    console.log(editorText.length)
+    if (editorText.length < 3) {
+      debugger
+      layer.msg('评论不能为空或小于3个字', {icon: 5})
+      return false
+    }
+
+    editor.txt.text(editorText)
+
+    let data = {
+      content: {
+        html: editor.txt.html(),
+        text: editorText
+      },
+      article: $('.artTitle').data('artid'),
+      commentId: $(this).attr("commentid")
+    }
+
+    $.post('/comment/reply', data, (data) => {
+      layer.msg(data.msg, {
+        time: 3000,
+        icon: data.icon,
+        end () {
+          if (data.status === 1) {
+            window.location.reload()
+          }
         }
-      }
+      })
     })
-  })
+
+
+  } else {
+
+    let data = {
+      content: {
+        html: editor.txt.html(),
+        text: editor.txt.text()
+      },
+      article: $('.artTitle').data('artid')
+    }
+
+    $.post('/comment', data, (data) => {
+      layer.msg(data.msg, {
+        time: 3000,
+        icon: data.icon,
+        end () {
+          if (data.status === 1) {
+            window.location.reload()
+          }
+        }
+      })
+    })
+  }
 })
 
 //  点赞
@@ -70,4 +110,22 @@ $('.dianzan').click(() => {
       tips: 1
     })
   })
+})
+
+// 回复
+$('.btn-reply').click(function () {
+  let username = $(this).parents('.commentParent').find(".mainuser").text()
+  let commentid = $(this).parents('.commentParent').find(".mainuser").data("commentid")
+  $('.submit').attr('commentid', commentid)
+  // $('span.default', '#Editor').text("回复: @" + username+ '\n')
+  editor.txt.text('@' + username + ' 回复: \n')
+  let url = window.location.href
+  let reg = /#comment/
+  let onoff = reg.test(url)
+  if (onoff) {
+    location = location
+  } else {
+    window.location.href = url + "#comment"
+  }
+
 })

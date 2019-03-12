@@ -9,6 +9,8 @@ import 'font-awesome/css/font-awesome.css'
 
 import App from './App.vue'
 import router from './router'
+import store from './vuex'
+
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.prototype.$axios = axios
@@ -17,6 +19,7 @@ Vue.prototype.$axios = axios
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App),
   components: { App },
   template: '<App/>'

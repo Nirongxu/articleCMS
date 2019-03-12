@@ -49,6 +49,9 @@ router.post('/addArticle', article.addArticle)
 //  发表评论接口
 router.post('/comment', user.keepLog, comment.addComment)
 
+//  回复评论接口
+router.post('/comment/reply', user.keepLog, comment.replyComment)
+
 //  头像上传接口
 router.post('/upload', user.keepLog, upload.single('file'), user.upload)
 

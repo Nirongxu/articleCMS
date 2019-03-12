@@ -67,6 +67,14 @@ export default {
           })
             .then(response => {
               console.log(response)
+              if (response.data.status === 0) {
+                that.$message({
+                  showClose: true,
+                  message: response.data.msg,
+                  type: 'error'
+                })
+                return false
+              }
               that.$message({
                 showClose: true,
                 message: response.data.msg,

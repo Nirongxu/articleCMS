@@ -21,6 +21,13 @@ exports.getNavClassify = async ctx => {
 
 //  修改导航分类
 exports.setNavClassify = async (ctx, next) => {
+  if (ctx.session.isNew) {
+    ctx.body = {
+      msg: '用户未登录',
+      status: 0
+    }
+    return false
+  }
   const data = ctx.request.body.navClassifyData
   await NavClassify.remove()
   let res = {

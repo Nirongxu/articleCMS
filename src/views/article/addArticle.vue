@@ -109,7 +109,6 @@ export default {
     this.$axios.get('/api/setting/getNavClassify')
       .then(function (response) {
         if (response.status === 200) {
-          console.log(response)
           response.data.navList.shift()
           that.options = response.data.navList
           return false

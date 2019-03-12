@@ -83,6 +83,7 @@
 </template>
 
 <script>
+import Cookies from 'js-cookie'
 import Bottom from '../components/Footer/bottom'
 import menuTree from '../components/menuTree/menuTree'
 export default {
@@ -250,7 +251,10 @@ export default {
       }
     },
     handleCommand (command) {
-      this.$message('click on item ' + command)
+      if (command === 'logout') {
+        Cookies.remove('access_token');
+        location.reload()
+      }
     }
   },
   created () {

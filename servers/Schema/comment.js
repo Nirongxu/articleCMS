@@ -4,7 +4,7 @@
  * Date: 2018/10/31
  * Description: 文件描述
  */
-const { Schema } = require('../database/db.config')
+const {Schema} = require('../database/db.config')
 
 const Objectid = Schema.Types.ObjectId
 
@@ -21,13 +21,27 @@ const commentSchema = new Schema({
     type: Objectid,
     ref: 'articles'
   },
-  reply: {
-    content: String,
+  reply: [{
+    content: {
+      html: String,
+      text: String
+    },
     author: {
-      type: Objectid,
-      ref: 'users'
+      username: String,
+      uid: {
+        type: Objectid,
+        ref: 'users'
+      },
+      avatar: {
+        type: String,
+        default: '/public/avatar/icon.jpg'
+      }
+    }, // 关联 users表
+    cretime: {
+      type: Date,
+      default: Date.now
     }
-  }
+  }]
 }, {
   versionKey: false,
   timestamps: {
