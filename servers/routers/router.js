@@ -12,6 +12,8 @@ const comment = require('../control/comment')
 const upload = require('../util/upload')
 
 const router = new Router()
+// 后台管理页
+router.get('/adminPage', article.adminPage)
 
 router.get('/login', async (ctx, next) => {
   await ctx.render('login', {
@@ -33,6 +35,9 @@ router.get('/:fenlei/page/:id', user.keepLog, article.getList)
 
 // 文章详情页
 router.get('/article/:id', article.details)
+
+
+
 
 // 注册接口
 router.post('/user/reg', user.reg)

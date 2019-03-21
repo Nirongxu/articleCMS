@@ -210,6 +210,20 @@ exports.details = async ctx => {
   })
 }
 
+// 后台管理页面
+exports.adminPage = async ctx => {
+  console.log(ctx)
+  // if (ctx.session.isNew) {
+  //   ctx.body = {
+  //     msg: '用户未登录',
+  //     status: 0
+  //   }
+  //   return false
+  // }
+  console.log('=========== admin =============')
+  await ctx.render('dist/index')
+}
+
 //  查找当前用户所有的文章列表
 exports.articleList = async ctx => {
   if (ctx.session.isNew) {

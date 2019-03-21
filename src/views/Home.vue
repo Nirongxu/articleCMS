@@ -53,7 +53,7 @@
                   </el-dropdown-menu>
                 </el-dropdown>
             </li>
-            <li class="icon"><img src="/static/images/admin/icon.jpg" /> </li>
+            <li class="icon"><img :src="avatar" /> </li>
           </ul>
         </el-header>
         <div class="tabnavBox" ref="tabnavbox">
@@ -90,6 +90,7 @@ export default {
   name: 'dc-home',
   data () {
     return {
+      avatar: "./static/images/admin/icon.jpg",
       visible: false,
       top: 0,
       left: 0,

@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import Login from '@/views/login/index.vue'
 import Home from '@/views/Home.vue'
 import HomeMain from '@/views/mainIndex.vue'
-import NotFound from '@/page404.vue'
 import AddArticle from '@/views/article/addArticle.vue'
 import ArticleList from '@/views/article/articleList.vue'
 import Comment from '@/views/comment/comment.vue'
@@ -117,12 +116,5 @@ export default new Router({
         }
       ]
     },
-    {
-      path: '/*',
-      component: NotFound,
-      name: '',
-      hidden: true,
-      children: []
-    }
   ]
 })
